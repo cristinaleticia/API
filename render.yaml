@@ -1,0 +1,9 @@
+services:
+  - type: web
+    name: api-classificador-cabelo
+    env: python
+    buildCommand: pip install -r requirements.txt
+    startCommand: gunicorn api_classificador_cabelo:app
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.9.0
