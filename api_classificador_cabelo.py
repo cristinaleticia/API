@@ -148,6 +148,18 @@ def info_modelo():
         'classes': TIPOS_CABELO
     })
 
+@app.route('/', methods=['GET'])
+def index():
+    return jsonify({
+        'status': 'online',
+        'nome': 'API de Classificação de Curvatura de Cabelo',
+        'endpoints': [
+            {'url': '/analisar', 'metodo': 'POST', 'descricao': 'Analisa imagem para classificar o tipo de cabelo'},
+            {'url': '/info-modelo', 'metodo': 'GET', 'descricao': 'Retorna informações sobre o modelo carregado'}
+        ],
+        'instrucoes': 'Envie uma imagem para /analisar usando o campo "imagem" em um form-data ou "imagem_base64" em JSON'
+    })
+
 if __name__ == '__main__':
     # Modo debug apenas em desenvolvimento local
     import os
